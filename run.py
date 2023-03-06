@@ -139,6 +139,17 @@ def calculate_stock_data(data):
 
     return new_stock_data
 
+def get_stock_values(data):
+    """
+    Get the headins and put it in a libary.
+    """
+    
+    print("Print Heading")
+    stock = SHEET.worksheet("stock").get_all_values()
+    headings_row = stock[1]
+    print(headings_row)
+    
+
 
 
 def main():
@@ -153,6 +164,7 @@ def main():
     sales_columns = get_last_5_enteries_sales()
     stock_data =  calculate_stock_data(sales_columns)
     update_worksheet(stock_data, "stock")
+    get_stock_values(data)
     
 
 
