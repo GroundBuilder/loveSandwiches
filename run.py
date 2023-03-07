@@ -145,9 +145,11 @@ def get_stock_values(data):
     Get the headins and put it in a libary.
     """
     print("Print Heading")
-    stock = SHEET.worksheet("stock").get_all_values()
-    headings = stock[0]
+    headings = SHEET.worksheet("stock").get_all_values()[0]
+    
     print(headings)
+
+
 
     return headings
     
