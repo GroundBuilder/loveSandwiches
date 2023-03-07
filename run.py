@@ -144,15 +144,32 @@ def get_stock_values(data):
     """
     Get the headins and put it in a libary.
     """
-    print("Print Heading")
     headings = SHEET.worksheet("stock").get_all_values()[0]
+    heading_dict = zip(headings, data)
+    stock_values = dict(heading_dict)
+    return stock_values
     
-    print(headings)
+def get_stock_values(data):
+    """
+    Print out the calculated stock numbers for each sandwich type.
+    """
+    headings = SHEET.worksheet("stock").get_all_values()[0]
 
+    # headings = SHEET.worksheet('stock').row_values(1)
 
+    print("Make the following numbers of sandwiches for next market:\n")
 
-    return headings
+    # new_data = {}
+    # for heading, stock_num in zip(headings, data):
+    #     new_data[heading] = stock_num
+    # return new_data
     
+    return {heading: data for heading, data in zip(headings, data)}
+    
+stock_values = get_stock_values(stock_data)
+print(stock_values)
+
+
 
 
 
@@ -161,10 +178,10 @@ def main():
     Run all program functions
     """
     data = get_sales_data()
-    # sales_data = [int(num) for num in data]
-    # update_worksheet(sales_data, "sales")
-    # new_surplus_data =  calculate_surplus_data(sales_data)
-    # update_worksheet(new_surplus_data, "surplus")
+    sales_data = [int(num) for num in data]
+    update_worksheet(sales_data, "sales")
+    new_surplus_data =  calculate_surplus_data(sales_data)
+    update_worksheet(new_surplus_data, "surplus")
     sales_columns = get_last_5_enteries_sales()
     stock_data =  calculate_stock_data(sales_columns)
     update_worksheet(stock_data, "stock")
