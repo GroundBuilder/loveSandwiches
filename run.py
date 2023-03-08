@@ -122,7 +122,8 @@ def get_last_5_enteries_sales():
         column = sales.col_values(ind)
         columns.append(column[-5:])
 
-    return columns
+    # return columns
+    pprint(columns)
 
 def calculate_stock_data(data):
     """
@@ -166,8 +167,8 @@ def get_stock_values(data):
     
     return {heading: data for heading, data in zip(headings, data)}
     
-stock_values = get_stock_values(stock_data)
-print(stock_values)
+# stock_values = get_stock_values(stock_data)
+# print(stock_values)
 
 
 
@@ -190,5 +191,6 @@ def main():
 
 
 print("Welcome to Love Sanwiches Data Automation\n")
-main()
+# main()
 
+get_last_5_enteries_sales()
