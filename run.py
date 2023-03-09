@@ -122,16 +122,16 @@ def get_last_5_enteries_sales():
         column = sales.col_values(ind)
         columns.append(column[-5:])
 
-    # return columns
-    pprint(columns)
+    return columns
+
 
 def calculate_stock_data(data):
     """
     Calculate the average stock for each item type, adding 10%
     """
     print("Calculating stock data...\n")
-    new_stock_data = []
 
+    new_stock_data = []
     for column in data:
         int_column = [int(num) for num in column]
         average = sum(int_column) / len(int_column)
@@ -167,8 +167,9 @@ def get_stock_values(data):
     
     return {heading: data for heading, data in zip(headings, data)}
     
-# stock_values = get_stock_values(stock_data)
-# print(stock_values)
+
+
+
 
 
 
@@ -187,10 +188,11 @@ def main():
     stock_data =  calculate_stock_data(sales_columns)
     update_worksheet(stock_data, "stock")
     get_stock_values(data)
-    
+    stock_values = get_stock_values(stock_data)
+    print(stock_values)
 
 
 print("Welcome to Love Sanwiches Data Automation\n")
-# main()
+main()
 
-get_last_5_enteries_sales()
+# get_last_5_enteries_sales()
